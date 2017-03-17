@@ -1,0 +1,35 @@
+body{
+  padding: 50px;
+}
+#chart {
+  background-color: powderblue;
+  max-width: 300px;
+  }
+#delete{
+  max-width: 300px;
+}
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+.panel{
+  background: powderblue;
+  margin:5px;
+  padding:5px;
+  max-width: 100px;
+  display:inline-block;
+}
+
+.panel:hover{
+  background: lightgreen;
+}
+#new{
+  margin-top:10px;
+}
+#addOpt{
+   margin-bottom:10px;
+}
+
+
