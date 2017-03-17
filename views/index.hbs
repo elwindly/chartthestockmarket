@@ -15,9 +15,13 @@
 
 
 <script>
-  var stocks = "{{{stockList}}}";;
+  var stocks = "{{{stockList}}}";
   var pollOptions = stocks.split(",");
-  getData (pollOptions);
+  console.log(pollOptions[0] == "");
+  if (pollOptions[0] != "") {
+    getData (pollOptions);
+  }
+  
 </script>
 
 
