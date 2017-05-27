@@ -6,7 +6,7 @@
   <form class="form-inline" id="stockForm">
     <div class="form-group">
       <label for="stock">Stock symbol:</label>
-      <input type="text" class="form-control" id="stock" placeholder="Enter stock symbol">
+      <input type="text" class="form-control" id="stock" placeholder="Enter stock symbol" required>
     </div>
     <button type="submit" id="addStock" class="btn btn-default">Submit</button>
   </form>
@@ -14,15 +14,7 @@
 <div id="stocks"></div>
 
 
-<script>
-  var stocks = "{{{stockList}}}";
-  var pollOptions = stocks.split(",");
-  console.log(pollOptions[0] == "");
-  if (pollOptions[0] != "") {
-    getData (pollOptions);
-  }
-  
-</script>
+
 
 
 

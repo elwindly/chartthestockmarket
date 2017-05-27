@@ -1,46 +1,23 @@
 require('./../config/config');
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const yahooFinance = require('yahoo-finance');
 const {Stock} = require('./../models/stocks');
 
+const StockController = require('./../controllers/stockController');
+
+const stockController = new StockController();
+
 /* GET home page. */
-router.get('/', (req,res)=> {
-  Stock.find({}).then((stocks)=>{
-    let stockList = stocks.map((stock)=>{
-      return stock.symbol;
-    });
-    res.render('index', { 
-      title: 'Stock Market',
-      stockList:stockList
-    });
-  }).catch((e)=>{
-    res.render('index', { 
-      title: 'Stock Market',
-      error:"Something is wrong"
-    });
-  });
-});
+router.get('/', stockController.getHomePage);
 
-router.get('/stock/:symbol', (req,res)=> {
-  let symbol = req.params.symbol;
-  let to = new Date();
-  let temp = new Date();
-  let from = new Date(temp.setFullYear(temp.getFullYear()-1));
+//send the stock symbols
+router.get('/stockList', stockController.getStocksFromDb);
 
-  yahooFinance.historical({
-    symbol: symbol,
-    from: from,
-    to: to,
-  }, function (err, quotes) {
-    let quote = quotes.map((elem)=>{
-      return [elem.date.getTime(), elem.adjClose];
-    });
-    res.status(200).send(quote);
-  });
+//get stocks data from Yahoo finance
+router.get('/stocks', stockController.getStocksData);
 
-});
-
-
+//get induvidual stocks data from Yahoo finance
+router.get('/stock', stockController.getOneStockData);
 
 module.exports = router;

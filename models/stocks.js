@@ -11,8 +11,6 @@ var StockSchema = new mongoose.Schema({
     symbol:commonRules,
 });
 
-
-
 var Stock = mongoose.model('Stock', StockSchema);
 
 module.exports = {Stock};

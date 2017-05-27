@@ -39,19 +39,24 @@ io.on('connection',(socket)=>{
   
   socket.on('deleteSymbol',(symbol)=>{
     Stock.findOneAndRemove({symbol:symbol.stock}).then((stock)=>{
-
+      io.emit('delete', { stock:symbol.stock } );
     }).catch((e)=>{
-
+      console.log("Stock already exists");
     });
-     io.emit('delete', { stock:symbol.stock } );
+     
   });
 
   socket.on('addSymbol',(symbol)=>{
     Stock.findOne( {symbol:symbol.stock }).then((stock)=>{
-      if(stock == null) {
-        let stock = new Stock({symbol:symbol.stock});
-        stock.save();
-        io.emit('add', { stock:symbol.stock } );
+      if (stock == null) {
+         let stock = new Stock({symbol:symbol.stock});
+         stock.save().then(() => {
+            io.emit('add', { stock:symbol.stock } );
+         }).catch((e) => {
+           console.log(e);
+         });       
+      } else {
+         console.log("Stock already exists");
       }
     });
 

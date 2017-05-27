@@ -5,31 +5,41 @@ body{
   background-color: powderblue;
   max-width: 300px;
   }
-#delete{
-  max-width: 300px;
-}
-a:link {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: none;
-}
-.panel{
-  background: powderblue;
-  margin:5px;
-  padding:5px;
-  max-width: 100px;
-  display:inline-block;
-}
 
-.panel:hover{
-  background: lightgreen;
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-left: 15px;
+    margin-top: 15px;
+    max-width: 200px;
+    float:left;
 }
+.alert.info {background-color: #2196F3;}
+
 #new{
   margin-top:10px;
 }
-#addOpt{
+#stockForm{
    margin-bottom:10px;
 }
 
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
 
